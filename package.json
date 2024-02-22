@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "login-test": "npx nightwatch tests/ui/loginPage/UI_LoginPage.js --reporter=html",
+    "login-test": "npx nightwatch tests/ui/loginPage/UI_LoginPage.js --reporter=./html-reporter.js",
     "api-test": "npx nightwatch tests/api/Withdrawal.js -e chrome_headless --reporter=./html-reporter.js"
   },
   "keywords": [],

@@ -11,12 +11,12 @@ let request = require("./helpers/request.js");
 describe('Withdrawal Functionality', function () {
 
   /**
-   * Test 1 : Normal Withdrawal - db should decrease the `maxWithdrawal` and `maxWithdrawals` after withdrawing
+   * Test 1 : Normal Withdrawal - db should decrease the `maxWithdrawalAmount` and `maxWithdrawals` after withdrawing
    * 1. Get 1 user from db and get userid and a payment method id
    * 2. Request a withdraw within the withdrawal amount, get withdrawl id
    * 3. Wait for 5 seconds to processed the payment
    * 4. Get withdrawal status via withdrawal id
-   * 5. Get the users and assert `maxWithdrawal` and `maxWithdrawals` values
+   * 5. Get the users and assert `maxWithdrawalAmount` and `maxWithdrawals` values
    */
   it('should decrease the withdrawal amount and max withdrawal after a request', async function(browser) {
     let supertest = browser.supertest;
@@ -44,6 +44,7 @@ describe('Withdrawal Functionality', function () {
           }])
           .then(async (withdrawResponse) => {
             expect(withdrawResponse._body.length).to.be.greaterThan(0, "/withdrawals/users/{userID}/payment-methods/{paymentMethodID} should have data return");
+            withdrawID = withdrawResponse._body[0].id;
           });
       });
       
@@ -110,25 +111,32 @@ describe('Withdrawal Functionality', function () {
         }])
     };
 
+    let maxWithdrawals;
+    let userID;
+    let paymentMethodID;
     // Get a user sample, get id, payment method, and maxWithdrawalAmount
     await request.get(supertest, "/users", 200)
       .then(async (getUserResponse) => {
         expect(getUserResponse._body.length).to.be.greaterThan(0, "/users should have data return");
         let user = getUserResponse._body[0];
-        let maxWithdrawals = user.maxWithdrawals;
-        let userID = user.id;
-        let paymentMethodID = user.paymentMethods[0].id;
+        maxWithdrawals = user.maxWithdrawals;
+        userID = user.id;
+        paymentMethodID = user.paymentMethods[0].id;
+        });
+    
 
-        // Request a withdrawal by maxWithdrawals number of times 
-        let requestArray = [];
-        for (let index = 0; index < maxWithdrawals; index++) {
-          requestArray.push((postRequest(userID, paymentMethodID, 200)));
-        }
-        Promise.all(requestArray);
-        
+    // Request a withdrawal by maxWithdrawals number of times 
+    let requestArray = [];
+    for (let index = 0; index < maxWithdrawals; index++) {
+      requestArray.push((postRequest(userID, paymentMethodID, 200)));
+    }
+    await Promise.all(requestArray)
+      .then(async() => {
+        // After a number of maxWithdrawals request times 
         // Expect on the last call the status code is 403
         await postRequest(userID, paymentMethodID, 403);
-        });
+      });
+
   });  
 
   after((browser) => {
