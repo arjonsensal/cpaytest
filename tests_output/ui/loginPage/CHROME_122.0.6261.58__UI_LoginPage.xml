@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="3">
+
+  <testsuite name="ui.loginPage.UI_LoginPage"
+    errors="0" failures="0" hostname="" id="" package="loginPage" skipped="0"
+    tests="3" time="31.75" timestamp="">
+  
+    <testcase name="Testing Login Functionality with correct credentials" classname="ui.loginPage.UI_LoginPage" time="8.487" assertions="5">
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Testing Login Functionality with wrong credentials" classname="ui.loginPage.UI_LoginPage" time="5.878" assertions="4">
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Test Create account Button" classname="ui.loginPage.UI_LoginPage" time="1.469" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+
+  
+
+    
+
+  
+  </testsuite>
+</testsuites>

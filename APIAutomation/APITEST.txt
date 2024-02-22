@@ -1,0 +1,37 @@
+
+api issues
+1 - Date issue, instructions says you can only add per month but you can use future dates and status code is 200
+2 - withdrawal issue, after withdrawal request, the maxWithdrawalAmount and maxWithdrawal did not change <- critical issue
+3 - withdrawal issue, after withdrawal request, user was able to add higher than the maxWithdrawalAmount <- critical issue
+4 - withdrawal issue, was able to withdraw with the incorrect payment method id <- critical issue
+4 - withdrawal issue, was able to withdraw with the incorrect user id <- critical issue
+
+
+automatable issues
+adding date - correct date format within the month
+adding date - correct date format not within the month
+adding date - incorrect date format
+
+
+automate these tests
+normal withdrawal within the withdrawal amount
+get user id 
+ then withdraw with amount then get id, 
+  then verify withdrawal via withdraw id to check if success
+
+test maximum withdrawal amount - higher than the withdrawal amount
+get user id 
+ then withdraw with amount then get id, 
+  then verify withdrawal via withdraw id to check if success
+
+test maximum withdrawal times - higher than the withdrawal times 
+get user id 
+ then withdraw with amount then get id, 
+  then verify withdrawal via withdraw id to check if success
+
+
+
+
+
+
+
