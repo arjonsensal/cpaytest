@@ -7,6 +7,11 @@ Open the cmd or powershell and change directory to this folder then install depe
 ```
 npm install
 ```
+or
+```
+npm clean install
+```
+
 Wait for the loading and after that you should be able to run the scripts
 
 For the Programming Language used, I used Javascript. Mainly becaused this is my mainly used language and I like it. I could have used Java but I would have to install dependencies on my end 
