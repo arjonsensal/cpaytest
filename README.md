@@ -48,6 +48,7 @@ For the automated tests: <br>
 2. Test of Higher Withdrawal amount, endpoint should not accept the request if withdrawal amount is higher than the `maxWithdrawalAmount` - Similar to first one, this should be tested as well since this leave the company/bank/client vulnerable to exploits involving money
 3. Test of Withdrawal times, endpoint should not accept the request if withdrawing a number of times greater than the  `maxWithdrawals` - this one should be tested since this is to ensure the ATM/bank/client have suffiecient funds for others
 
+Run the docker file on APIAutomation folder to run server <br>
 To run the test: 
 ```
 npm run api-test
