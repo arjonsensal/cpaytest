@@ -31,7 +31,7 @@ Exercise 1: UI Test
 For the UI Testing of the facebook login page I covered: 
 1. Testing of the Login Functionality with the correct credentials - this should be the simplest and also a valuable go to test in every login function for every page
 2. Testing of the Login Functionality with incorrect credentials - while the other one is a positive test, this one is a negative testing
-3. Testing of the create button - While the other two are important, this should too as well
+3. Testing of the create button - While the other two are important, this should too as well since this is used to populate data in db and used so users can login on the page
 While this exercise challenge is specified as a UI, I automated the first two as a happy path scenario with the login functionality.
 
 To run the test: 
@@ -43,16 +43,17 @@ for every run, there is an html-report that should automatically open in the bro
 
 Exercise 2: <br>
 Notable Issues: <br>
-1. On the withdrawal instruction, It says you can only schedule for a date within the month. But after adding a UTC date with a next year date the request was still OK(200) when it should have been not.
+1. On the withdrawal instruction, It says you can only schedule for a date within the month. But after adding a UTC date with a next year date the request was still OK(200) when it should have been 403.
 2. Withdrawal endpoint issue 1 - After withdrawal request, the maxWithdrawalAmount and maxWithdrawal count did not change values.
 3. Withdrawal endpoint issue 2 - During withdrawal request, I was able to request an amount higher than the maxWithdrawalAmount for a specific user
 4. Withdrawal endpoint issue 3 - Was able to make a withdrawal request with incorrect payment method id and still returns 200
 5. Withdrawal endpoint issue 4 - Was able to make a withdrawal request with incorrect user id and still returns 200
+6. there is no authentication/authorization header for all the endpoints
 
 For the automated tests: <br>
 1. Test of Normal Withdrawal, after withdrawal, the `maxWithdrawals` and `maxWithdrawalAmount` should decrease - I choose this one since this is critical, espcially with money involved. User should only be able to withdraw based on the amount in the account
 2. Test of Higher Withdrawal amount, endpoint should not accept the request if withdrawal amount is higher than the `maxWithdrawalAmount` - Similar to first one, this should be tested as well since this leave the company/bank/client vulnerable to exploits involving money
-3. Test of Withdrawal times, endpoint should not accept the request if withdrawing a number of times greater than the  `maxWithdrawals` - this one should be tested since this is to ensure the ATM/bank/client have suffiecient funds for others
+3. Test of Withdrawal times, endpoint should not accept the request if withdrawing a number of times greater than the  `maxWithdrawals` - this one should be tested since this is to ensure the ATM/bank/client have sufficient funds for others
 
 Run the docker file on APIAutomation folder to run server <br>
 To run the test: 
@@ -76,5 +77,5 @@ Steps: <br>
    cal.setTime(theDate);
    boolean monday = cal.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY;
    ```
-4. Now if today is a monday, the script will verify the status and at the same time, also create a new request
+4. Now if today is a monday, the script will verify the status of the most recent withdrawal and at the same time, also create a new request
 5. Done, this should be the main structure steps in verifying a scheduled withdrawal.   
