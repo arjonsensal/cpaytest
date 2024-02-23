@@ -57,6 +57,7 @@ To run the test:
 ```
 npm run api-test
 ```
+If you encounter issues with running this test, like `AggregationError`, check if you are running the server from the docker file
 For test execution report:
 for every run, there is an html-report that should automatically open in the browser
 <br><br>
