@@ -3,7 +3,11 @@ CPAY Challenge Test
 Installation: <br><br>
 Install nodejs on your machine via https://nodejs.org/en preferably latest
 
-Open the cmd or powershell and change directory to this folder then install dependencies using this command
+Open the cmd or powershell and change directory to this folder 
+```
+cd /yourPath/cpaytest
+```
+then install dependencies using this command
 ```
 npm install
 ```
