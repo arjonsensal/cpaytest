@@ -8,8 +8,9 @@ Open the cmd or powershell and change directory to this folder then install depe
 npm install
 ```
 or
+for clean install
 ```
-npm clean install
+npm ci
 ```
 
 Wait for the loading and after that you should be able to run the scripts
