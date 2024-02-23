@@ -19,9 +19,9 @@ npm ci
 
 Wait for the loading and after that you should be able to run the scripts
 
-For the Programming Language used, I used Javascript. Mainly becaused this is my mainly used language and I like it. I could have used Java but I would have to install dependencies on my end 
+For the Programming Language used, I used Javascript. Mainly becaused this is my most used language and I like it. I could have used Java but I would have to install dependencies on my end 
 and it could take a longer time for me to complete this test. For the framework tool used, I used Nightwatch.js as my framework since it's easy to install and use. Similar to Selenium this
-tool also uses keyword driven test to test fields and also it can test rest api endpoint, so using this tool was enough to test both UI and API for the challenge.
+tool also uses keyword driven commands to test fields and interact with ui elements and also it can test rest api endpoint, so using this tool was enough to test both UI and API for the challenge.
 
 On the folder structure, you will notice the `tests` folder and thats where all the tests will be running. `api` for the api test and `ui` for the ui test.
 <br>
